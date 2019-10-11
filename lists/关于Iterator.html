@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>关于interator | Risexie</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.01caefc4.css" as="style"><link rel="preload" href="/assets/js/app.56f95d45.js" as="script"><link rel="preload" href="/assets/js/4.ab5bcf37.js" as="script"><link rel="prefetch" href="/assets/js/1.60b27f52.js"><link rel="prefetch" href="/assets/js/2.87ffcd93.js"><link rel="prefetch" href="/assets/js/3.08b20e69.js"><link rel="prefetch" href="/assets/js/5.08ff075f.js"><link rel="prefetch" href="/assets/js/6.abb57fce.js"><link rel="prefetch" href="/assets/js/7.5d8e94ce.js"><link rel="prefetch" href="/assets/js/8.34bb0783.js"><link rel="prefetch" href="/assets/js/9.5924d11a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.01caefc4.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/" class="home-link router-link-active"><!----><span class="site-name">
+      Risexie
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="/lists/let与const.html" class="nav-link">Blog</a></div><div class="nav-item"><a href="/about.html" class="nav-link">About</a></div><!----></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="/lists/let与const.html" class="nav-link">Blog</a></div><div class="nav-item"><a href="/about.html" class="nav-link">About</a></div><!----></nav><ul class="sidebar-links"><li><a href="/lists/let与const.html" class="sidebar-link">关于var,let 与const</a></li><li><a href="/lists/关于Promise.html" class="sidebar-link">关于Promise(上)</a></li><li><a href="/lists/关于Promise2.html" class="sidebar-link">关于Promise(下)</a></li><li><a href="/lists/通过十道练习题，看Promise特点.html" class="sidebar-link">通过十道Promise练习题，看Promise特点</a></li><li><a href="/lists/关于Iterator.html" class="active sidebar-link">关于interator</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/lists/关于Iterator.html#iterator遍历器" class="sidebar-link">iterator遍历器</a></li><li class="sidebar-sub-header"><a href="/lists/关于Iterator.html#手动模拟一个iterator" class="sidebar-link">手动模拟一个iterator</a></li><li class="sidebar-sub-header"><a href="/lists/关于Iterator.html#generator函数" class="sidebar-link">Generator函数</a></li><li class="sidebar-sub-header"><a href="/lists/关于Iterator.html#强大的generator" class="sidebar-link">强大的Generator</a></li></ul></li><li><a href="/lists/关于Generator.html" class="sidebar-link">关于Generator</a></li></ul></div><div class="page"><div class="content"><h1 id="关于interator"><a href="#关于interator" aria-hidden="true" class="header-anchor">#</a> 关于interator</h1><p>在Es6的数组当中，新增了扩展运算符(…)，它可以将一个数组转换为用逗号分隔的参数序列。</p><div class="language-Javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token operator">...</span>arr<span class="token punctuation">)</span>
+<span class="token comment">// 1 2 7 4 7 </span>
+</code></pre></div><p>不但如此，我们还可以使用<code>for of</code>循环来来遍历数组或者类数组对象，例如nodeList和argumemt对象</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span>v <span class="token keyword">in</span> arr<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//1</span>
+<span class="token comment">//2</span>
+<span class="token comment">//7</span>
+</code></pre></div><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>v <span class="token keyword">of</span> arguments<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//12</span>
+<span class="token comment">//6</span>
+<span class="token comment">//2</span>
+</code></pre></div><p>这主要功劳，其实都归咎于JavaScript原生给他们提供的<code>[symbol.iterator]</code>属性。</p><h2 id="iterator遍历器"><a href="#iterator遍历器" aria-hidden="true" class="header-anchor">#</a> iterator遍历器</h2><p>在es6中，给以下的数组结构都部署了<code>symbol.iterator</code>属性。</p><ul><li>Array</li><li>Map</li><li>Set</li><li>String</li><li>函数的arguments对象</li><li>NodeList对象</li><li>TypedArray</li></ul><p>这个属性比较特殊，它是一个函数，调用这个函数返回的是一个Iiterator遍历器。也正是因为iterator遍历器，所以他们可以被<code>for of</code>循环所遍历。下面主要主要来介绍一个iterator遍历器。</p><p>遍历器对象具有一个next方法，next方法返回的主要是一个指针对象，该对象具有两个属性，分别为value和done。以数组为例，第一次调用next，返回对象value属性的值为数组的第一个成员，done属性是一个布尔值，代表遍历是否结束。</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> it <span class="token operator">=</span> arr<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">//{ value: 1, done: false}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// {value: 2, done: false}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// {value: 3, done: false}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// {value: undefined, done: true}</span>
+</code></pre></div><p>依次调用next方法，可以让指针依次指向数组的下一个成员，当所有成员被遍历完毕，value值为undefined，并且done属性为true。</p><h2 id="手动模拟一个iterator"><a href="#手动模拟一个iterator" aria-hidden="true" class="header-anchor">#</a> 手动模拟一个iterator</h2><p>我们知道在Es6中的对象是不可以被<code>for of</code>循环遍历的，也就是对象原生并不具备iterator接口。但是我们既然知道了iterator的秘密，其实我们可以自己尝试一下为对象模拟一个iterator接口。</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    data<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> self <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+        <span class="token keyword">let</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>
+            <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">&lt;</span> self<span class="token punctuation">.</span>data<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+                        value<span class="token punctuation">:</span> self<span class="token punctuation">.</span>data<span class="token punctuation">[</span>index<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                        done<span class="token punctuation">:</span> <span class="token boolean">false</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+                        value<span class="token punctuation">:</span> undefined<span class="token punctuation">,</span>
+                        done<span class="token punctuation">:</span> <span class="token boolean">true</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> v <span class="token keyword">of</span> obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//1</span>
+<span class="token comment">//2</span>
+</code></pre></div><p>只要我们的类数组对象部署了iterator接口，那么就可以使用<code>for of</code>循环来遍历了。</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token number">0</span><span class="token punctuation">:</span> <span class="token string">'a'</span><span class="token punctuation">,</span>
+    <span class="token number">1</span><span class="token punctuation">:</span> <span class="token string">'b'</span><span class="token punctuation">,</span>
+    <span class="token number">2</span><span class="token punctuation">:</span> <span class="token string">'c'</span><span class="token punctuation">,</span>
+    length<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">:</span> Array<span class="token punctuation">.</span>prototype<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> v <span class="token keyword">of</span> obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="generator函数"><a href="#generator函数" aria-hidden="true" class="header-anchor">#</a> Generator函数</h2><p>Genenerator函数，一个看似很高深的东东，它并不像我们普通的函数一样，调用它会执行函数体里面的代码，并在最后返回一个值。调用Generator，生成的是一个Iteraotr遍历器。</p><p>诶，我们刚才说那些数据结构可以被<code>for of</code>循环所遍历，不就是靠的iterator遍历器吗？ 的确如此。只要给我们的数据结构的<code>symbol.iterator</code>属性赋值一个<code>Generator</code>函数，那么就可以使该数组结构具备iterator接口了。</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">let</span> myIterable <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+myIterable<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">yield</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token keyword">yield</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token operator">...</span>myIterable<span class="token punctuation">)</span>
+<span class="token comment">// 1,2,3</span>
+</code></pre></div><p>Generator函数在声明方面，其实跟我们普通的函数差别并不是很大，主要是在名字的后方加了个一个(*)符号。在里面的yield表达式代表的是通过next方法返回的value值。</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> test<span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">yield</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> it <span class="token operator">=</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// {value :1 ,done:false};</span>
+it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// {value :2 ,done:false};</span>
+it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// {value :undefined ,done:true};</span>
+
+</code></pre></div><h2 id="强大的generator"><a href="#强大的generator" aria-hidden="true" class="header-anchor">#</a> 强大的Generator</h2><p><code>Generator</code>函数的作用，并不只是用来生成一个iterator，当函数内部执行到yield表达式，函数就会把<code>yield</code>表达式后方的值通过next方法返回对象的value属性来返回，这是函数会暂停，并等待我们通过<code>next</code>方法来恢复执行。</p><p>并且我们还可以通过给<code>next</code>方法传参，来把参数传入Generator函数的内部。</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token operator">*</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'started'</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> it <span class="token operator">=</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>； <span class="token comment">//started</span>
+it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span>
+it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>
+
+</code></pre></div><p>这种可以在内部自我暂停，并通过外部恢复执行的函数，其实是Es6对协程的实现。说到这，就基本上是属于Generator的内容了。让我们在下一篇文章里面再来详细讲述把。</p></div><div class="page-edit"><!----><!----></div><!----></div></div></div>
+    <script src="/assets/js/4.ab5bcf37.js" defer></script><script src="/assets/js/app.56f95d45.js" defer></script>
+  </body>
+</html>
